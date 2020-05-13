@@ -17,6 +17,20 @@
 							:hov-width="width"
 							:hov-describe="describe"/>
 				</li>
+				<li>
+					<hover-view
+						:hov-img-url="imgs[0]"
+						:hov-tittle="tittle" :hov-height="height"
+						:hov-width="width"
+						:hov-describe="describe"/>
+				</li>
+				<li>
+					<hover-view
+						:hov-img-url="imgs[0]"
+						:hov-tittle="tittle" :hov-height="height"
+						:hov-width="width"
+						:hov-describe="describe"/>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -32,10 +46,10 @@
 		},
 		data() {
 			return {
-				tittle: '标题',
-				height: '200px',
-				width: '160px',
-				describe: '描述',
+				tittle: '标题1',
+				height: '160px',
+				width: '240px',
+				describe: '描述1',
 				imgs: [
 					require('@/assets/rotation1.jpg'),
 					require('@/assets/rotation2.jpg'),
@@ -49,10 +63,8 @@
 
 <style scoped>
 	.med {
-		width: 80%;
+		width: 1200px;
 		display: flex;
-		border-style: solid;
-		border-color: #69B170;
 		margin: auto;
 		padding: 0;
 	}
@@ -79,7 +91,7 @@
 		text-align: center;
 		background-color: #BDBDBD;
 		margin: 0;
-		padding: 0px;
+		padding: 0;
 	}
 
 	.opa:hover {
@@ -89,8 +101,6 @@
 	.recommend {
 		height: 180px;
 		width: 140px;
-		border-style: solid;
-		border-color: red;
 		margin-right: 10px;
 		margin-left: 10px;
 		/*background-repeat: no-repeat;*/

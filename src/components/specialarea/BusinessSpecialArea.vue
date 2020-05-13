@@ -1,7 +1,7 @@
 <template>
-	<div style="width: 100%;height: 440px;">
+	<div style="width: 100%;height: 440px;margin-bottom: 40px;">
 		<div class="special">
-			<div style="width: 780px;border-style: solid;border-color: #BDBDBD;height: 440px;display: inline-block">
+			<div style="width: 780px;height: 440px;display: inline-block">
 				<div style="width: 780px;">
 					<h3 style="margin-top: auto;">{{specialName}}</h3>
 				</div>
@@ -104,7 +104,7 @@
 	import HoverView from '@/components/hoverview/HoverView'
 
 	export default {
-		name: 'SpecialArea',
+		name: 'BusinessSpecialArea',
 		components: {HoverView},
 		component: {
 			HoverView
@@ -125,16 +125,16 @@
 	.special {
 		width: 1200px;
 		height: 440px;
-		border-style: solid;
-		border-color: #2c3e50;
 		margin: auto;
+		box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.2);
+		border-radius: 20px;
+		padding-top: 10px;
 	}
 
 	.special-left {
 		width: 780px;
 		height: 380px;
-		border-style: solid;
-		border-color: green;
+
 		padding: 0;
 		text-align: center;
 		margin-top: 0;
@@ -159,16 +159,14 @@
 
 	.special-right {
 		float: right;
-		border-style: solid;
-		border-color: bisque;
 		width: 400px;
 		height: 440px;
 		display: inline-block;
 	}
 
 	.special-right-div {
-		background-color: linen;
-		width: 400px;
+		background-color: rgb(245,245,245);
+		width: 380px;
 		height: 40px;
 		margin-top: 6px;
 		text-align: left;

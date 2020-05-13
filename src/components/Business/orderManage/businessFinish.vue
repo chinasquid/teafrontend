@@ -43,7 +43,7 @@
 
 <script>
 	export default {
-		name: 'Finish',
+		name: 'businessFinish',
 		data() {
 			return {
 				tableData: [{

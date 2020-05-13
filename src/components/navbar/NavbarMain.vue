@@ -1,34 +1,31 @@
 <template>
 	<div id="NavbarMain" class="navmain">
-		<logo/>
-		<SearchMain/>
-		<el-menu
-				:default-active="activeIndex2"
-				class="el-menu-demo"
-				mode="horizontal"
-				@select="handleSelect"
-				text-color="#FFFBFF"
-				active-text-color="#ffffff"
-				background-color="#69B170"
-				menu-trigger="hover back " >
-			<el-menu-item index="1">首页</el-menu-item>
-			<el-menu-item index="2" disabled>商品秒杀</el-menu-item>
-			<el-submenu index="3">
-				<template slot="title">我的工作台</template>
-				<el-menu-item index="2-1">选项1</el-menu-item>
-				<el-menu-item index="2-2">选项2</el-menu-item>
-				<el-menu-item index="2-3">选项3</el-menu-item>
-				<el-submenu index="2-4">
-					<template slot="title">选项4</template>
-					<el-menu-item index="2-4-1">选项1</el-menu-item>
-					<el-menu-item index="2-4-2">选项2</el-menu-item>
-					<el-menu-item index="2-4-3">选项3</el-menu-item>
-				</el-submenu>
-			</el-submenu>
-			<el-menu-item index="4" disabled>个人中心</el-menu-item>
-			<el-menu-item index="5"><login/></el-menu-item>
-<!--			<login/>-->
-		</el-menu>
+		<logo style=";display:inline-block;padding: 0;margin-top: 0"/>
+		<SearchMain style="display:inline-block;margin: auto;"/>
+		<div class="navRight">
+			<div style="margin: auto;padding: 0">
+				<el-link type="primary" >
+				<router-link to="/home" style="text-decoration: none">
+					<h3 style="color: #69B170">
+						首页
+					</h3>
+				</router-link>
+				</el-link>
+			</div>
+			<div style="margin: auto;padding: 0">
+				<el-link type="primary" >
+					<h3>
+						商品秒杀
+					</h3>
+				</el-link>
+			</div>
+			<div style="margin: auto;padding: 0">
+				<el-link type="primary">
+					<h3>茶友圈</h3>
+				</el-link>
+			</div>
+			<login style="margin: auto;padding: 0;"/>
+		</div>
 	</div>
 </template>
 
@@ -36,10 +33,11 @@
 	import SearchMain from '@/components/search/SearchMain'
 	import logo from '@/components/logo/logo'
 	import login from '@/components/login/login'
+
 	export default {
 		name: 'NavbarMain',
 		components: {
-			SearchMain,logo,login
+			SearchMain, logo, login
 		},
 		data() {
 			return {
@@ -57,9 +55,26 @@
 
 <style scoped>
 	.navmain {
-		background-color: #69B170;
 		display: flex;
 		justify-content: space-between;
-		align-items: center
+		align-items: center;
+		height: 60px;
+		border-bottom-style: solid;
+		border-bottom-color: #BDBDBD;
+		box-shadow: 2px 1px 3px 1px #BDBDBD;
+	}
+
+	.navCenter {
+		border-style: solid;
+		border-color: navajowhite;
+		margin: auto;
+		display: flex;
+	}
+
+	.navRight {
+		display: flex;
+		width: 400px;
+		float: right;
+		height: 60px;
 	}
 </style>

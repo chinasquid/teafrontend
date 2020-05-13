@@ -173,6 +173,9 @@
 				activePrice: 'AllPrice'
 			}
 		},
+		create:{
+
+		},
 		methods: {
 			stu() {
 				console.log('分页查询----S')

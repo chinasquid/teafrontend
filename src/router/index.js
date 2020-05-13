@@ -1,25 +1,62 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-const routerMode = new Router({
-	mode:'hisyory',
-	base:'/',
-	routes:[
+const router = new VueRouter({
+	mode: 'history',
+	base: '/',
+	routes: [
 		{
-			path:'/',
-			redirect:'home'
+			path: '/',
+			redirect: 'home'
 		},
 		{
-			name:'home',
 			path: '/home',
-			compoents:()=> import('@/view/home/Home')
+			name: 'home',
+			component: () => import('@/view/home/Home')
+		},
+		{
+			path: '/goodsDetails',
+			name: 'goodsDetails',
+			component: () => import('@/view/Goods/GoodsView')
+		},
+		{
+			path: '/personal',
+			name: 'personal',
+			component: () => import('@/view/person/PersonView')
+		},
+		{
+			path: '/businessManage',
+			name:'businessManage',
+			component: () => import('@/view/person/businessView'),
+		},
+		{
+			path: '/search',
+			component: () => import('@/view/search/SearchView'),
+			children: [
+				{
+					path: '/',
+					redirect: 'tea'
+				},
+				{
+					path: 'tea',
+					name: 'tea',
+					component: () => import('@/view/search/SearchClass/SearchTeaClass')
+				},
+				{
+					path: 'business',
+					name: 'business',
+					component: () => import('@/view/search/SearchClass/SearchStoreClass')
+				},
+				{
+					path: 'teaSet',
+					name: 'teaSet',
+					component: () => import('@/view/search/SearchClass/SearchTeaSetClass')
+				}
+			]
 		}
 	]
 })
 
-export default new Router({
-	module: hash,
-	routes
-})
+export default router

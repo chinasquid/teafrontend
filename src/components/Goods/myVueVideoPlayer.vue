@@ -1,6 +1,6 @@
 <template>
 	<div class='demo'>
-		<video-player class="video-player vjs-custom-skin"
+		<video-player class=" video-player vjs-custom-skin"
 									ref="videoPlayer"
 									:playsinline="true"
 									:options="playerOptions">
@@ -9,6 +9,7 @@
 </template>
 <script>
 	export default {
+		name: 'myVueVideoPlayer',
 		data() {
 			return {
 				playerOptions: {
@@ -29,7 +30,7 @@
 					fluid: true,
 					sources: [{
 						//类型
-						type: "video/mp4",
+						type: 'video/mp4',
 						//url地址
 						src: require('@/assets/xc1.mp4')
 					}],
@@ -51,10 +52,10 @@
 	}
 </script>
 <style scoped>
-	.demo{
+	.demo {
 		display: inline-block;
-		width: 600px;
-		height: 338px;
+		width: 700px;
+		height: 400px;
 		text-align: center;
 		line-height: 100px;
 		border: 1px solid transparent;
@@ -66,8 +67,6 @@
 		margin-right: 4px;
 	}
 
-	.demo:hover{
-		display: block;
-	}
+
 </style>
 

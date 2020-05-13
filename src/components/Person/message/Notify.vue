@@ -1,10 +1,15 @@
 <template>
-	$END$
+	<div style="">
+
+	</div>
 </template>
 
 <script>
 	export default {
-		name: 'Notify'
+		name: 'Notify',
+		data() {
+			return {}
+		}
 	}
 </script>
 

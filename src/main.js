@@ -20,6 +20,7 @@ Vue.prototype.$store = store
 axios.defaults.baseURL = 'http://localhost:8080'
 axios.defaults.timeout = 3000
 axios.defaults.withCredentials = true
+
 new Vue({
 	el: '#app',
 	router,

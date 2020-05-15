@@ -14,7 +14,8 @@ const state = {
 		user_type: null,
 		phone: null,
 		head_img: null
-	}
+	},
+	goodsDetailsList:[]
 }
 
 Vue.use(Vuex)

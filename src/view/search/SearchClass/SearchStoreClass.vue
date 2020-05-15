@@ -1,85 +1,78 @@
 <template>
 	<div>
+		<div style="width: 600px;margin-left: auto;margin-right: auto;margin-top: 20px;">
+			<el-input placeholder="请输入内容" v-model="searchOption.search_name" class="input-with-select">
+				<el-button slot="append" icon="el-icon-search" @click="search"/>
+			</el-input>
+		</div>
 		<!--		分类筛选-->
+		<div style="margin-top: 20px;">
 		<ul class="teaClass">
-			<li @click="changeTea('AllTea')" :class="{active : 'AllTea' === activeTea}">
+			<li @click="changeTea('')" :class="{active : '' === searchOption.main_tea_type}">
 				<a>全部茶叶</a>
 			</li>
-			<li @click="changeTea('GreenTea')" :class="{active : 'GreenTea' === activeTea}">
+			<li @click="changeTea('绿茶')" :class="{active : '绿茶' === searchOption.main_tea_type}">
 				<a>绿茶</a>
 			</li>
-			<li @click="changeTea('RedTea')" :class="{active : 'RedTea' === activeTea}">
+			<li @click="changeTea('红茶')" :class="{active : '红茶' === searchOption.main_tea_type}">
 				<a>红茶</a>
 			</li>
-			<li @click="changeTea('BlackTea')" :class="{active : 'BlackTea' === activeTea}">
+			<li @click="changeTea('黑茶')" :class="{active : '黑茶' === searchOption.main_tea_type}">
 				<a>黑茶</a>
 			</li>
-			<li @click="changeTea('WriteTea')" :class="{active : 'WriteTea' === activeTea}">
+			<li @click="changeTea('白茶')" :class="{active : '白茶' === searchOption.main_tea_type}">
 				<a>白茶</a>
 			</li>
-			<li @click="changeTea('YellowTea')" :class="{active : 'YellowTea' === activeTea}">
+			<li @click="changeTea('黄茶')" :class="{active : '黄茶' === searchOption.main_tea_type}">
 				<a>黄茶</a>
 			</li>
-			<li @click="changeTea('Oolong ')" :class="{active : 'Oolong ' === activeTea}">
-				<a>乌龙茶</a>
+			<li @click="changeTea('青茶 ')" :class="{active : '青茶 ' === searchOption.main_tea_type}">
+				<a>青茶</a>
 			</li>
 		</ul>
+		</div>
 		<el-divider/>
 		<ul class="teaClass">
-			<li @click="changeBrand('AllBrand')" :class="{active : 'AllBrand' === activeBrand}">
+			<li @click="changeVariety('')" :class="{active : '' === searchOption.main_tea_variety}">
 				<a>全部品种</a>
 			</li>
-			<li @click="changeBrand('Brand1')" :class="{active : 'Brand1' === activeBrand}">
+			<li @click="changeVariety('龙井')" :class="{active : '龙井' === searchOption.main_tea_variety}">
 				<a>龙井</a>
 			</li>
-			<li @click="changeBrand('Brand2')" :class="{active : 'Brand2' === activeBrand}">
-				<a>正山小种</a>
-			</li>
-			<li @click="changeBrand('Brand3')" :class="{active : 'Brand3' === activeBrand}">
-				<a>云南滇红</a>
-			</li>
-			<li @click="changeBrand('Brand4')" :class="{active : 'Brand4' === activeBrand}">
-				<a>祁门红茶</a>
-			</li>
-			<li @click="changeBrand('Brand5')" :class="{active : 'Brand5' === activeBrand}">
-				<a>寿眉</a>
-			</li>
-			<li @click="changeBrand('Brand6')" :class="{active : 'Brand6' === activeBrand}">
-				<a>乌龙茶</a>
+			<li @click="changeVariety('毛尖')" :class="{active : '毛尖' === searchOption.main_tea_variety}">
+				<a>毛尖</a>
 			</li>
 		</ul>
 		<el-divider/>
 		<ul class="teaClass">
-			<li @click="changeStore('AllStore')" :class="{active : 'AllStore' === activeStore}">
+			<li @click="changeStore('')" :class="{active : '' === searchOption.store_type}">
 				<a>全部类别</a>
 			</li>
-			<li @click="changeStore('FlagshipStore')" :class="{active : 'FlagshipStore' === activeStore}">
+			<li @click="changeStore('旗舰店')" :class="{active : '旗舰店' === searchOption.store_type}">
 				<a>旗舰店</a>
 			</li>
-			<li @click="changeStore('ExclusiveStore')" :class="{active : 'ExclusiveStore' === activeStore}">
+			<li @click="changeStore('专卖店')" :class="{active : '专卖店' === searchOption.store_type}">
 				<a>专卖店</a>
 			</li>
-			<li @click="changeStore('DirectStore')" :class="{active : 'DirectStore' === activeStore}">
+			<li @click="changeStore('直营店')" :class="{active : '直营店' === searchOption.store_type}">
 				<a>直营店</a>
 			</li>
-			<li @click="changeStore('SelfStore')" :class="{active : 'SelfStore' === activeStore}">
+			<li @click="changeStore('自营店')" :class="{active : '自营店' === searchOption.store_type}">
 				<a>自营店</a>
 			</li>
 		</ul>
 		<el-divider/>
-		<business-item/>
+		<div v-for="(storeItem , index) in storeData" :key="index">
+			<business-item :information="storeItem"/>
+			<el-divider/>
+		</div>
+		<br>
+		<el-pagination
+			background
+			layout="prev, pager, next"
+			:total="total" :page-size=page>
+		</el-pagination>
 		<el-divider/>
-		<business-item/>
-		<el-divider/>
-		<business-item/>
-		<el-divider/>
-		<business-item/>
-		<el-divider/>
-		<business-item/>
-		<el-divider/>
-		<business-item/>
-
-
 	</div>
 </template>
 
@@ -91,33 +84,67 @@
 		components: {BusinessItem},
 		data() {
 			return {
+				storeData:[],
+				currentPage1: 1,
 				page: 12,
-				activeTea: 'AllTea',
-				activeBrand: 'AllBrand',
-				activePurpose: 'AllPurpose',
-				activeSeason: 'AllSeason',
-				activeStore: 'AllStore'
+				total:0,
+				searchOption:{
+					search_name:'',
+					search_type: '',
+					main_tea_type: '',
+					main_tea_variety: '',
+					main_tea_brand: '',
+					purpose: '',
+					tea_season: '',
+					price: '',
+					page: 1,
+					size: 12,
+					store_type:''
+				}
 			}
 		},
 		component: {
 			BusinessItem
 		},
+		created(){
+			console.log('???')
+			this.search();
+		},
 		methods: {
+			handleSizeChange(val) {
+				console.log(`每页 ${val} 条`);
+			},
+			handleCurrentChange(val) {
+				console.log(`当前页: ${val}`);
+			},
 			changeTea(TeaName) {
-				this.activeTea = TeaName
+				this.searchOption.main_tea_type = TeaName
 			},
-			changeBrand(BrandName) {
-				this.activeBrand = BrandName
+			changeVariety(BrandName) {
+				this.searchOption.main_tea_variety = BrandName
 			},
-			changePurpose(PurposeName) {
-				this.activePurpose = PurposeName
+			changeStore(StoreName) {
+				this.searchOption.store_type = StoreName
 			},
-			changeSeason(SeasonName) {
-				this.activeSeason = SeasonName
+			search(){
+				console.log('searchOption'+this.searchOption)
+				console.log('main_tea_type:'+this.searchOption.main_tea_type)
+				this.$axios.post('/searchStore',this.searchOption).then(res=>{
+					if (res.data.status === 1){
+						this.total = res.data.body.length
+						this.storeData = res.data.body
+					}else {
+						this.$message({
+							message:res.data.msg,
+							type:'error'
+						})
+					}
+
+
+				}).catch(err=>{
+					console.log(err)
+				})
 			},
-			changeStore(StoreName){
-				this.activeStore = StoreName
-			}
 		}
 	}
 </script>

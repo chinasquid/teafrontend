@@ -17,5 +17,12 @@ export default {
 		state.userBody.phone = newUserBody.phone;
 		state.userBody.user_id = newUserBody.user_id;
 		state.userBody.user_type = newUserBody.user_type
+	},
+	changeGoodsList(state,data){
+		state.goodsDetailsList = data
+	},
+	getGoods(state){
+		return state.goodsDetailsList
 	}
+
 }

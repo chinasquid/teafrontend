@@ -31,7 +31,7 @@
 				</div>
 				<div>
 					<h4 style="display: inline-block">商品原价：</h4>
-					<el-input v-model="originMoney" @change="handleChange" label="商品原价" style="width: 100px;display: inline-block" disabled="true"></el-input>
+					<el-input v-model="originMoney" @change="handleChange" label="商品原价" style="width: 100px;display: inline-block" disabled></el-input>
 
 				</div>
 				<div>

@@ -3,6 +3,7 @@
 		<el-backtop/>
 		<navbar-main/>
 		<router-view></router-view>
+		<div style="height:300px;"></div>
 	</div>
 </template>
 
@@ -13,8 +14,14 @@
 		name: 'App',
 		components: {
 			NavbarMain,
-
-		},
+		},watch: {
+			'$route': function(to,from){
+				document.body.scrollTop = 0
+				document.documentElement.scrollTop = 0
+				console.log(to)
+				console.log(from)
+			}
+		}
 	}
 </script>
 

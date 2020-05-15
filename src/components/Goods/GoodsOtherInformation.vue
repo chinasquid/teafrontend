@@ -1,11 +1,7 @@
 <template>
 	<div style="width: 1200px; margin: auto">
+		<el-divider/>
 		<div>
-			<button @click="changeShow('details')">商品描述</button>
-			<button @click="changeShow('comment')">评论</button>
-		</div>
-<el-divider/>
-		<div v-if="showType == 'details'">
 			<div style="width: 800px;height: 300px;border-style: solid;border-color: #69B170;margin: auto;text-align: left">
 				<div style="display: inline-block;width:400px;">
 					<h3>茶叶品种: 毛尖</h3>
@@ -15,11 +11,20 @@
 				<div style="display: inline-block;width:400px;">
 					<h3>储存方法:123123456</h3>
 					<h3>保质期:123123456</h3>
-					<h3>产地:贵州</h3></div>
+					<h3>产地:贵州</h3>
+				</div>
+				<div style="text-align: left;padding-left: 20px;">
+					<p><span style="font-size: 16px;">茶叶类型：绿茶</span></p>
+					<p><span style="font-size: 16px;">茶叶品种：毛尖</span></p>
+					<p><span style="font-size: 16px;">茶叶品牌：毛尖一号</span></p>
+					<div>
+						<span style="margin-right: 20px;">累计销量:1111</span>
+						<span>评价数量:1111</span>
+					</div>
+				</div>
 			</div>
-			<img style="margin: auto;border-style: solid;border-color: #999999;width: 1200px;height: 900px;"/>
 		</div>
-		<div v-else-if="showType == 'comment'" style="width: 1200px;height: 800px;border-style: solid;border-color: #69B170">
+		<div style="width: 1200px;border-style: solid;border-color: #69B170">
 			<comment-item/>
 			<comment-item/>
 			<comment-item/>
@@ -30,9 +35,10 @@
 
 <script>
 	import CommentItem from '@/components/Goods/CommentItem'
+
 	export default {
 		name: 'GoodsOtherInformation',
-		components:{
+		components: {
 			CommentItem
 		},
 		data() {

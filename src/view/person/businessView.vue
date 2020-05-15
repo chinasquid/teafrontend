@@ -2,27 +2,31 @@
 	<div>
 		<div style="min-width: 1200px;	" :style="{width:mainWidth}">
 			<div class="Business-left">
-				<div class="businessChooseTittle" @click="changeActive(1)" :class="{activeColor: activeNum==1}">
+				<div class="businessChooseTittle" @click="changeActive(1)" :class="{activeColor: activeNum===1}">
+					<h4>基础信息</h4>
+				</div>
+				<div class="businessChooseTittle" @click="changeActive(2)" :class="{activeColor: activeNum===2}">
 					<h4>销售数据</h4>
 				</div>
-				<div class="businessChooseTittle" @click="changeActive(2)" :class="{activeColor: activeNum == 2}">
+				<div class="businessChooseTittle" @click="changeActive(3)" :class="{activeColor: activeNum === 3}">
 					<h4>订单状态</h4>
 				</div>
-				<div class="businessChooseTittle" @click="changeActive(3)" :class="{activeColor: activeNum == 3}">
+				<div class="businessChooseTittle" @click="changeActive(4)" :class="{activeColor: activeNum === 4}">
 					<h4>广告申请</h4>
 				</div>
-				<div class="businessChooseTittle" @click="GoodsList" :class="{activeColor: activeNum == 4}">
+				<div class="businessChooseTittle" @click="GoodsList" :class="{activeColor: activeNum === 5}">
 					<h4>商品管理</h4>
 				</div>
-				<div class="businessChooseTittle" @click="changeActive(5)" :class="{activeColor: activeNum == 5}">
+				<div class="businessChooseTittle" @click="changeActive(6)" :class="{activeColor: activeNum === 6}">
 					<h4>消息通知</h4>
 				</div>
 			</div>
 			<div class="Business-center">
-				<sales-data v-show="activeNum == 1"/>
-				<OrderManage v-show="activeNum == 2"/>
-				<advert-apply v-show="activeNum == 3" />
-				<upload-product v-show="activeNum == 4" ref="productChild"/>
+				<business-information v-show="activeNum === 1"/>
+				<sales-data v-show="activeNum === 2"/>
+				<OrderManage v-show="activeNum === 3"/>
+				<advert-apply v-show="activeNum === 4" />
+				<upload-product v-show="activeNum === 5" ref="productChild"/>
 			</div>
 			<div class="Business-right">
 				<user-base/>
@@ -32,6 +36,7 @@
 </template>
 
 <script>
+	import businessInformation from '@/components/Business/businessInformation/businessInformation'
 	import UserBase from '@/components/Person/baseMsg/UserBase'
 	import SalesData from '@/components/Business/salesData/SalesData'
 	import OrderManage from '@/components/Business/orderManage/OrderManage'
@@ -45,6 +50,7 @@
 			return {activeNum: 1}
 		},
 		components: {
+			businessInformation,
 			UserBase, SalesData, OrderManage, AdvertApply,UploadProduct
 		},
 		computed: {
@@ -62,7 +68,7 @@
 				this.activeNum = num
 			},
 			GoodsList(){
-				this.activeNum = 4
+				this.activeNum = 5
 				this.$refs.productChild.getGoodsList();
 
 			}

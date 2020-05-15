@@ -1,45 +1,40 @@
 <template>
-	<div style="width: 1200px;margin: auto;margin-top: 10px;">
+	<div style="width: 1200px;margin-left: auto;margin-right:auto;margin-top: 10px;">
 		<div class="searchTypeMain">
 			<div style="float: left">
-				<router-link to="tea" style="text-decoration: none;color: #2c3e50">
-					<div class="searchTypeItem" :class="{activeItem: activeName === 'tea'}" @click="changeSearchType('tea')">
-						<h4 style="margin: 0" :class="{activeText: activeName === 'tea'}">茶叶搜索</h4>
-					</div>
-				</router-link>
-				<router-link to="business" style="text-decoration: none;color: #2c3e50">
-					<div class="searchTypeItem" :class="{activeItem: activeName === 'brand'}" @click="changeSearchType('brand')">
-						<h4 style="margin: 0" :class="{activeText: activeName === 'brand'}">商家搜索</h4>
-					</div>
-				</router-link>
+				<div class="searchTypeItem" :class="{activeItem: activeName === 'tea'}" @click="changeSearchType('tea')">
+					<h4 style="margin: 0" :class="{activeText: activeName === 'tea'}">茶叶搜索</h4>
+				</div>
+				<div class="searchTypeItem" :class="{activeItem: activeName === 'store'}" @click="changeSearchType('store')">
+					<h4 style="margin: 0" :class="{activeText: activeName === 'store'}">商家搜索</h4>
+				</div>
 			</div>
 		</div>
-		<router-view/>
-		<div style="height: 60px;"/>
-		<el-pagination
-			background
-			layout="prev, pager, next"
-			:total="1000" :page-size={page} >
-		</el-pagination>
+		<div v-if="activeName === 'tea'">
+			<search-tea-class ref="teaSearch"/>
+		</div>
+		<div v-if="activeName === 'store'">
+			<search-store-class ref="storeSearch"/>
+		</div>
 	</div>
 </template>
 
 <script>
+	import searchStoreClass from '@/view/search/SearchClass/SearchStoreClass'
+	import searchTeaClass from '@/view/search/SearchClass/SearchTeaClass'
 
 	export default {
 		name: 'SearchView',
-		components: {},
+		components: {searchTeaClass, searchStoreClass},
 		computed: {},
 		data() {
 			return {
 				activeName: 'tea',
 				page: 12,
+				information:''
 			}
 		},
 		methods: {
-			handleClick(tab, event) {
-				console.log(tab, event)
-			},
 			changeSearchType(typeName) {
 				this.activeName = typeName
 			}

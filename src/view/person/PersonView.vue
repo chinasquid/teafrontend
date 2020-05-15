@@ -2,24 +2,24 @@
 	<div>
 		<div style="min-width: 1200px;	" :style="{width:mainWidth}">
 			<div class="Personal-left">
-				<div class="personalChooseTittle" @click="changeActive(1)" :class="{activeColor: activeNum==1}">
+				<div class="personalChooseTittle" @click="changeActive(1)" :class="{activeColor: activeNum === 1}">
 					<h4>账号信息</h4>
 				</div>
-				<div class="personalChooseTittle" @click="changeActive(2)" :class="{activeColor: activeNum == 2}">
+				<div class="personalChooseTittle" @click="changeActive(2)" :class="{activeColor: activeNum === 2}">
 					<h4>购物车</h4>
 				</div>
-				<div class="personalChooseTittle" @click="changeActive(3)" :class="{activeColor: activeNum == 3}">
+				<div class="personalChooseTittle" @click="changeActive(3)" :class="{activeColor: activeNum === 3}">
 					<h4>订单状态</h4>
 				</div>
-				<div class="personalChooseTittle" @click="changeActive(4)" :class="{activeColor: activeNum == 4}">
+				<div class="personalChooseTittle" @click="changeActive(4)" :class="{activeColor: activeNum === 4}">
 					<h4>消息通知</h4>
 				</div>
 			</div>
 			<div class="Personal-center">
-				<personal-msg v-show="activeNum == 1"/>
-				<shopping-cart v-show="activeNum == 2"/>
-				<order-for-goods v-show="activeNum == 3"/>
-				<notify v-show="activeNum == 4"/>
+				<personal-msg v-show="activeNum === 1"/>
+				<shopping-cart v-show="activeNum === 2"/>
+				<order-for-goods v-show="activeNum === 3"/>
+				<notify v-show="activeNum === 4"/>
 			</div>
 			<div class="Personal-right">
 				<user-base/>
@@ -39,7 +39,7 @@
 	let clientWidth = document.body.clientWidth
 	export default {
 		name: 'PersonView',
-		components: {PersonalMsg, ShoppingCart,OrderForGoods,Notify,UserBase},
+		components: {PersonalMsg, ShoppingCart, OrderForGoods, Notify, UserBase},
 		data() {
 			return {activeNum: 1}
 		},
@@ -95,7 +95,7 @@
 		display: table-cell;
 		vertical-align: top;
 		border-width: 2px;
-		box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);
+		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 	}
 
 	.Personal-center {
@@ -110,7 +110,7 @@
 
 	.Personal-right {
 		width: 220px;
-		box-shadow: 0 2px 10px 0 rgba(0,0,0,0.1);
+		box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
 		display: table-cell;
 		height: 200px;
 		vertical-align: top;

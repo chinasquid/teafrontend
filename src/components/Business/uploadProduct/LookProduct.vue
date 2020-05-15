@@ -43,10 +43,10 @@
 						</el-radio-group>
 					</el-form-item>
 					<el-form-item label="茶叶品种">
-						<el-input v-model="form.tea_variety" maxlength="20" show-word-limit></el-input>
+						<el-input v-model="form.tea_variety" maxlength="10" show-word-limit></el-input>
 					</el-form-item>
 					<el-form-item label="茶叶品牌">
-						<el-input v-model="form.tea_brand" maxlength="20" show-word-limit></el-input>
+						<el-input v-model="form.tea_brand" maxlength="10" show-word-limit></el-input>
 					</el-form-item>
 					<el-form-item label="茶叶用途">
 						<el-radio-group v-model="form.purpose">

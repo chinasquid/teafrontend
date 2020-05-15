@@ -1,27 +1,27 @@
 <template>
 	<div class="item">
-		<img style="width: 240px;height: 160px; margin-top: 10px;" :src="goods" />
+		<img style="width: 240px;height: 160px; margin-top: 10px;" :src="'http://localhost:8080/'+information.file_virtual_path" />
 		<div>
-			<el-link type="danger" style="color:salmon;margin-top: 10px;margin-bottom: 10px;font-size: 18px;">【2020春茶 助农好茶】
+			<el-link type="danger" style="color:salmon;margin-top: 10px;margin-bottom: 10px;font-size: 18px;">{{information.goods_tittle}}
 			</el-link>
 		</div>
 		<div>
-			<span style="font-size: 14px;">醉品茶集  西湖龙井 2020年春茶 雨前1号 一级 极简牛皮纸方包 250g/包</span>
+			<span style="font-size: 14px;">{{information.goods_describe}}</span>
 		</div>
 		<div style="margin: 10px;">
-			<span><el-link type="danger" style="float: left">醉品茶城旗舰店</el-link></span>
+			<span><el-link type="danger" style="float: left">{{information.user_name}}</el-link></span>
 		</div>
 		<br>
 		<div style="margin-top: 20px;">
 			<el-link type="danger" style="color:salmon;margin-bottom: 10px;font-size: 22px;">
-				￥：110
+				￥：{{information.price}}
 			</el-link>
 		</div>
 		<div class="block">
 			<el-rate
-				v-model="value2"
+				v-model="information.score"
 				:colors="colors"
-				disabled :show-score={showScore}>
+				disabled :show-score=showScore>
 			</el-rate>
 		</div>
 		<div style="margin-top: 20px;">
@@ -37,10 +37,24 @@
 		data() {
 			return {
 				num: 1,
-				value2: 3.7,
 				colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
 				showScore: true,
-				goods:require('@/assets/goodsitem.jpg')
+			}
+		},
+		props:{
+			information:{
+				goods_tittle:String,
+				goods_describe:String,
+				file_virtual_path:String,
+				purpose:String,
+				tea_type:String,
+				tea_variety:String,
+				tea_brand:String,
+				tea_season:String,
+				price:Number,
+				post:Number,
+				score:Number,
+				user_name:String
 			}
 		},
 		methods: {
@@ -54,7 +68,7 @@
 <style scoped>
 	.item {
 		width: 260px;
-		height: 440px;
+		height: 410px;
 		border-style: solid;
 		border-color: darkgray;
 		margin-right: 20px;

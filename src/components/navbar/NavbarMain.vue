@@ -1,7 +1,6 @@
 <template>
 	<div id="NavbarMain" class="navmain">
 		<logo style=";display:inline-block;padding: 0;margin-top: 0"/>
-		<SearchMain style="display:inline-block;margin: auto;"/>
 		<div class="navRight">
 			<div style="margin: auto;padding: 0">
 				<el-link type="primary" >
@@ -12,16 +11,16 @@
 				</router-link>
 				</el-link>
 			</div>
-			<div style="margin: auto;padding: 0">
+			<div style="margin: auto;padding: 0" @click="toSearch">
 				<el-link type="primary" >
 					<h3>
-						商品秒杀
+						搜索
 					</h3>
 				</el-link>
 			</div>
 			<div style="margin: auto;padding: 0">
 				<el-link type="primary">
-					<h3>茶友圈</h3>
+					<h3>商品秒杀</h3>
 				</el-link>
 			</div>
 			<login style="margin: auto;padding: 0;"/>
@@ -30,14 +29,12 @@
 </template>
 
 <script>
-	import SearchMain from '@/components/search/SearchMain'
 	import logo from '@/components/logo/logo'
 	import login from '@/components/login/login'
 
 	export default {
 		name: 'NavbarMain',
-		components: {
-			SearchMain, logo, login
+		components: {logo, login
 		},
 		data() {
 			return {
@@ -48,6 +45,9 @@
 		methods: {
 			handleSelect(key, keyPath) {
 				console.log(key, keyPath)
+			},
+			toSearch(){
+				this.$router.push('/search');
 			}
 		}
 	}

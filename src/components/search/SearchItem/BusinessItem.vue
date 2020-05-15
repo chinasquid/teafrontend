@@ -1,18 +1,18 @@
 <template>
 	<div class="storeOrigin">
 		<a>
-			<div class="businessMain" :style="{backgroundImage: 'url('+storeBack+')'}">
-				<img class="businessImg" :src="img"/>
+			<div class="businessMain" :style="{backgroundImage: 'url('+'http:localhost:8080/'+information.back_img_virtual+')'}">
+				<img class="businessImg" :src="information.head_img === null ? img:information.head_img"/>
 				<div class="businessDetails">
 					<div style="text-align: center;display: flex">
-						<a style="font-size: 20px;font-weight: bold;">有家茶馆</a>
+						<a style="font-size: 20px;font-weight: bold;">{{information.user_name}}</a>
 						<img :src="storeType" style="width: 80px;height: 20px;margin-left: 10px;">
 					</div>
 					<div>
-						<h5 class="businessType">主营类型：绿茶、白茶、黑茶，红茶，黄茶、乌龙茶</h5>
+						<h5 class="businessType">主营类型：{{information.main_tea_type}} {{information.main_tea_variety}} {{information.main_tea_brand}}</h5>
 					</div>
 					<div>
-						<h5 class="address">发货地址：贵州</h5>
+						<h5 class="address">发货地址：{{information.address}}</h5>
 					</div>
 				</div>
 			</div>
@@ -29,6 +29,18 @@
 				img: require('@/assets/logo.png'),
 				storeType: require('@/assets/logo1.png'),
 				storeBack: require('@/assets/gg2.png'),
+			}
+		},
+		props: {
+			information: {
+				head_img:String,
+				user_name:String,
+				main_tea_type:String,
+				main_tea_variety:String,
+				main_tea_brand:String,
+				store_type:String,
+				address:String,
+				back_img_virtual:String,
 			}
 		}
 	}

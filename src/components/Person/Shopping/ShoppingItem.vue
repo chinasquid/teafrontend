@@ -5,29 +5,32 @@
 				<el-checkbox v-model="checkedNow" @click="show"/>
 			</div>
 			<div class="shop-goods-item" style="width: 120px;">
-				<img :src="img" style="width: 120px;height: 90px;margin-top: 5px;"/>
+				<img :src="'http://localhost:8080/'+information.file_virtual_path" style="width: 120px;height: 90px;margin-top: 5px;"/>
 			</div>
 			<div class="shop-goods-item" style="width: 100px;">
-				<h5>标题</h5>
+				<h5>{{information.goods_tittle}}</h5>
 			</div>
 			<div class="shop-goods-item" style="width: 100px;">
-				<h5>规格</h5>
+				<h5>{{information.goods_describe}}</h5>
 			</div>
 			<div class="shop-goods-item" style="width: 80px;">
-				<h5>单价:200000</h5>
+				<h5>单价:{{information.price}}</h5>
 			</div>
 			<div class="shop-goods-item" style="width: 110px;">
 				<div style="padding-top: 16px;">
-					<el-input-number v-model="num" style="width: 100px;" size="mini" @change="handleChange" :min="1" :max="99"/>
+					<el-input-number v-model="information.number" style="width: 100px;" size="mini" @change="handleChange" :min="1" :max="99"/>
 				</div>
 			</div>
 			<div class="shop-goods-item" style="width: 100px;">
-				<h5>总价</h5>
+				<h5>{{nowAllPrice}}</h5>
 			</div>
 			<div class="shop-goods-item" style="width: 80px;">
 				<el-button size="mini" type="danger" @click="deleteGoods" style="display: block;padding: 7px 7px">删除</el-button>
 				<el-button size="mini" type="success" @click="buyGoods" style="display: block;padding: 7px 7px;margin-left: 0;margin-top: 10px">
 					购买
+				</el-button>
+				<el-button size="mini" type="primary" @click="saveGoods" style="display: block;padding: 7px 7px;margin-left: 0;margin-top: 10px">
+					保存
 				</el-button>
 			</div>
 		</div>
@@ -41,7 +44,23 @@
 			return {
 				img: require('@/assets/rotation1.jpg'),
 				num: 1,
-				checkedNow: false
+				checkedNow: false,
+			}
+		},
+	props:{
+		information:{
+			goods_id: '',
+			file_virtual_path: '',
+			price: '',
+			number: 1,
+			all_price: '',
+			user_id: '',
+			goods_tittle:'',
+			goods_describe:''
+		}
+	},computed:{
+			nowAllPrice(){
+				return this.information.number * this.information.price
 			}
 		},
 		methods: {
@@ -52,24 +71,30 @@
 				console.log(this.checkedNow)
 			},
 			deleteGoods() {
-				this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
-					confirmButtonText: '确定',
-					cancelButtonText: '取消',
-					type: 'warning'
-				}).then(() => {
+					this.$axios.post('/deleteShopCarItem',{
+						goods_id:this.information.goods_id
+					}).then(res=>{
 					this.$message({
-						type: 'success',
-						message: '删除成功!'
+						message:res.data.msg,
+						type:'warning'
 					})
-				}).catch(() => {
-					this.$message({
-						type: 'info',
-						message: '已取消删除'
-					})
+				}).catch(err=>{
+					console.log(err)
 				})
 			},
 			buyGoods(){
 
+			},
+			saveGoods(){
+				console.log('???')
+				this.$axios.post('/saveShopCarItem',this.information).then(res=>{
+					this.$message({
+						message:res.data.msg,
+						type:'warning'
+					})
+				}).catch(err=>{
+					console.log(err)
+				})
 			}
 		}
 	}
